@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView rvMakananFav;
-    List<String> listDataMakanan;
+    List<ModelMakananFavorit> listDataMakanan;
 
     AdapterListMakanan adapter;
     @Override
@@ -20,11 +20,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         rvMakananFav = findViewById(R.id.rvMakananFav);
         listDataMakanan = new ArrayList<>();
-        listDataMakanan.add("Singkong goreng");
-        listDataMakanan.add("Ayam Goreng");
-        listDataMakanan.add("Ayam Bakar");
-        listDataMakanan.add("Nasi goreng");
-        listDataMakanan.add("Bubur Ayam");
+
+        ModelMakananFavorit makanan1 = new ModelMakananFavorit();
+        makanan1.setNamaMakanan("Singkong Keju");
+        makanan1.setDescription("makanan ini terbuat dari singkong campur keju");
+        makanan1.setImageFood(R.drawable.singkong);
+        listDataMakanan.add(makanan1);
+
+        ModelMakananFavorit makanan2 = new ModelMakananFavorit();
+        makanan2.setNamaMakanan("Ayam Goreng");
+        makanan2.setDescription("ayam goreng sambel geprek");
+        makanan2.setImageFood(R.drawable.singkong);
+        listDataMakanan.add(makanan2);
+
 
         // call adapter class
         rvMakananFav.setLayoutManager(new LinearLayoutManager(this));

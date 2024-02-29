@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +14,10 @@ import java.util.List;
 
 public class AdapterListMakanan extends RecyclerView.Adapter<AdapterListMakanan.ViewHolder>{
 
-    List<String> listData;
+    List<ModelMakananFavorit> listData;
     private LayoutInflater mInflater;;
 
-    public AdapterListMakanan(List<String> listData, Context context){
+    public AdapterListMakanan(List<ModelMakananFavorit> listData, Context context){
         this.listData = listData;
         this.mInflater = LayoutInflater.from(context);
     }
@@ -32,8 +33,11 @@ public class AdapterListMakanan extends RecyclerView.Adapter<AdapterListMakanan.
 
     @Override
     public void onBindViewHolder(@NonNull AdapterListMakanan.ViewHolder holder, int position) {
-        String makanann = listData.get(position);
-        holder.tvMakananFavorite.setText(makanann);
+        ModelMakananFavorit makanan = listData.get(position);
+        holder.tvMakananFavorite.setText(makanan.getNamaMakanan());
+        holder.tvDescription.setText(makanan.getDescription());
+        holder.ivMakananFav.setImageResource(makanan.getImageFood());
+
     }
 
     @Override
@@ -44,9 +48,14 @@ public class AdapterListMakanan extends RecyclerView.Adapter<AdapterListMakanan.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvMakananFavorite;
+        TextView tvDescription;
+        ImageView ivMakananFav;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvMakananFavorite = itemView.findViewById(R.id.tvMakananFav);
+            tvDescription = itemView.findViewById(R.id.tvDescription);
+            ivMakananFav = itemView.findViewById(R.id.ivMakananFav);
         }
     }
 }
